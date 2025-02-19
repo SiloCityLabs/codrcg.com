@@ -4,6 +4,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 interface HeaderProps {
   className?: string;
   navLinks?: { label: string; href: string; target?: string }[];
+  darkLinks?: boolean;
 }
 
 const defaultNavLinks = [
@@ -17,7 +18,7 @@ const defaultNavLinks = [
 ];
 
 function Header(props: HeaderProps) {
-  const { className, navLinks = defaultNavLinks } = props;
+  const { className, navLinks = defaultNavLinks, darkLinks = false } = props;
 
   return (
     <Navbar
@@ -29,7 +30,7 @@ function Header(props: HeaderProps) {
     >
       <Container>
         <Navbar.Brand href="/">COD RCG</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className={darkLinks ? 'black-toggler' : ""} />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {navLinks.map((link, index) => (

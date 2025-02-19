@@ -56,7 +56,7 @@ export default function InfiniteWarfareInfo() {
           iw, infinite warfare, infinite warfare rcg, infinite warfare random class generator, infinite warfare rcg, infinite warfare random class generator"
         />
       </Head>
-      <Header className="infinite-warfare" navLinks={navLinks} />
+      <Header className="infinite-warfare" navLinks={navLinks} darkLinks={true} />
       <Container className="information">
         <h2 className="text-center mb-4">
           Infinite Warfare

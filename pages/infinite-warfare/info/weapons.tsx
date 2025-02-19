@@ -56,7 +56,7 @@ export default function InfiniteWarfareWeapons() {
           iw, infinite warfare, infinite warfare rcg, infinite warfare random class generator, infinite warfare rcg, infinite warfare random class generator"
         />
       </Head>
-      <Header className="infinite-warfare" navLinks={navLinks} />
+      <Header className="infinite-warfare" navLinks={navLinks} darkLinks={true} />
       <Container className={styles.generator} fluid>
         <Row>
           <Col>
