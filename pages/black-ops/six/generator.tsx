@@ -1,17 +1,28 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
 import Header from "@/components/Header";
 import BlackOpsSixLoadout from "@/components/generators/black-ops/six/BlackOpsSixLoadout";
-//Styles
-import styles from "@/public/styles/components/Loadout.module.css";
+import { generateGithubLink } from "@/helpers/generateGithubLink";
 
+let navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Zombies Generator", href: "/black-ops/six/zombies-generator", target: "" },
+  { label: "Loadout Info", href: "/black-ops/six/info", target: "" },
+  { label: "Changelog", href: "/changelog", target: "" },
+];
 export default function BlackOpsSix() {
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Zombies Generator", href: "/black-ops/six/zombies-generator" },
-    { label: "Loadout Info", href: "/black-ops/six/info" },
-    { label: "Changelog", href: "/changelog" },
-  ];
+  const [isLoading, setIsLoading] = useState(true);
+  const params = {
+    title: "Black Ops 6 MP Generator: ",
+    labels: "Black Ops 6"
+  };
+
+  useEffect(() => {
+    const feedbackLink = generateGithubLink("SiloCityLabs", "codrcg.com", params);
+    navLinks.push({ label: "Feedback", href: feedbackLink, target: "_blank" });
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
@@ -31,17 +42,17 @@ export default function BlackOpsSix() {
         />
       </Head>
       <Header className="black-ops" navLinks={navLinks} />
-      <Container className={styles.generator} fluid>
+      <Container fluid>
         <Row>
           <Col>
-            <h2>
+            <h2 className="text-center mb-4">
               Black Ops 6
               <span className="d-none d-sm-inline-block">&nbsp;-&nbsp;</span>
               <br className="d-block d-sm-none" />
               Random Class Generator
             </h2>
 
-            <BlackOpsSixLoadout />
+            {!isLoading && (<BlackOpsSixLoadout />)}
           </Col>
         </Row>
       </Container>
