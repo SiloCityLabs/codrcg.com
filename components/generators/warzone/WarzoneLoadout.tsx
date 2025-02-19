@@ -149,15 +149,20 @@ async function fetchLoadoutData(setData) {
 
   try {
     const game = "warzone";
+    let primGame = "";
     const randClassName = fetchClassName();
     const wildcard = fetchWildcard(game);
     //Figure out primary attachment count
-    const primAttachCount = wildcard.name === "Gunfighter" ? 8 : 5;
+    let primAttachCount = 5;
+    if (wildcard.name === "Gunfighter") {
+      primAttachCount = 8;
+      primGame = "black-ops-six";
+    }
 
     const perks = fetchPerks(game);
     let weapons = {
       primary: {
-        weapon: fetchWeapon("primary", game),
+        weapon: fetchWeapon("primary", primGame ?? game),
         attachments: "",
       },
       secondary: {
