@@ -4,11 +4,6 @@
   padding: 0.5em;
 }
 
-.textDark {
-  color: #333 !important;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4) !important;
-}
-
 .bgGray {
   background-color: #6c757e !important;
 }
